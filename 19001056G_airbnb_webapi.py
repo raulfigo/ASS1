@@ -13,48 +13,6 @@ def my_student_id():
     response={"studentID": "19001056G"}
     return jsonify(response), 200, {'Content-Type': 'application/json'}
 
-@app.route('/add', methods=['GET'])
-def add():
-    if 'op1' in request.args.keys() and 'op2' in request.args.keys():
-        a = int(request.args['op1']) 
-        b = int(request.args['op2']) 
-        return jsonify({"operand 1": a, "operand 2": b, "sum":a+b}) #return JSON object
-    else:
-        return jsonify({'error':'missing parameter(s)'}), 400
-    
-@app.route('/mul', methods=['POST'])
-def mul(): 
-    print("multiply") 
-    data = request.json #get json data from request body 
-    a = data["op1"] 
-    b = data["op2"] 
-    return jsonify({'mul':a*b}),200
-    
-
-
-
-reviews = []
-userid = 123
-listA = ["1", "2"]
-
-reviews.append(
-                    {               
-                        "id": userid,
-                        "type": "ban",
-                        "reverse": "unban",
-                        "reverse_name": "Unban",
-                        "reverse_url": listA
-                    }
-                )
-
-@app.route('/test')
-def test():
-    return jsonify(
-        category="success",
-        data=reviews,
-    )
-
-
 
 
 @app.route('/airbnb/reviews/', methods=['GET'])
